@@ -10,7 +10,7 @@ def test_bst_initialize():
 	bst = BinarySearchTree(3)
 	assert str(bst) == '3 _ _ '
 
-def test_bst_initialize():
+def test_bst_add_one():
 	""" Check that we can initialize a BST, then add a value """
 	bst = BinarySearchTree()
 	bst.add(3)
