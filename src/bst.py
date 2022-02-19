@@ -23,6 +23,26 @@ class Node:
 				return True
 			else:
 				return self.right.add(value)
+
+	def get_deepest(self, current_lvl: int) -> tuple:
+		"""
+			Gets the deepest nodes and their depths of this Node
+			The format is (NodeCSV, Depth)
+			where NodeCSV is is a comma seperated list of the deepest nodes
+			and Depth is the depth of those nodes
+		"""
+		if not self.left and not self.right:
+			return ([self.value], current_lvl)
+		
+		left_result = self.left.get_deepest(current_lvl+1) if self.left else ([],current_lvl)
+		right_result = self.right.get_deepest(current_lvl+1) if self.right else ([],current_lvl)
+
+		if left_result[1] == right_result[1]:
+			return (left_result[0] + right_result[0], left_result[1])
+		elif left_result[1] > right_result[1]:
+			return left_result
+		else:
+			return right_result
 				
 
 class BinarySearchTree:
@@ -64,7 +84,10 @@ class BinarySearchTree:
 			where NodeCSV is is a comma seperated list of the deepest nodes
 			and Depth is the depth of those nodes
 		"""
-		return (None, None)
+		if self.root is None:
+			return ([], None)
+		else:
+			return self.root.get_deepest(current_lvl=0)
 
 	def __str__(self) -> str:
 		""" Return a simple string representation of the binary search tree """

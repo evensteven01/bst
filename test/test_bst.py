@@ -47,9 +47,15 @@ def test_add_root_duplicate():
 def test_depth_empty():
 	bst = BinarySearchTree()
 	result = bst.get_deepest()
-	assert not result[0] and result[1] == 0
+	assert not result[0] and result[1] == None
 
 def test_depth_example_1():
 	bst = BinarySearchTree([12,11,90,82,7,9])
 	result = bst.get_deepest()
-	assert result[0] == 9 and result[1] == 3
+	print(f'Result: {result}')
+	assert result[0] == [9] and result[1] == 3
+
+def test_depth_example_2():
+	bst = BinarySearchTree([26, 82, 16, 92, 33])
+	result = bst.get_deepest()
+	assert result[0] == [33,92] and result[1] == 2
