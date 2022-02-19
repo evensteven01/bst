@@ -5,20 +5,23 @@ class Node:
 		self.left = None
 		self.right = None
 
-	def __str__(self) -> str:
-		""" Return a simple string representation of a BST node """
-		if not self.value:
-			return '_'
-		bstStr = str(self.value) + ' '
-		if not self.left:
-			bstStr += '_ '
-		if not self.right:
-			bstStr += '_ '
-		if self.left:
-			bstStr += str(self.left)
-		if self.right:
-			bstStr += str(self.right)
-		return bstStr
+	def add(self, value: int) -> bool:
+		""" Add a value to the binary search tree """
+		if self.value == value:
+			return False
+		elif value < self.value:
+			if self.left is None:
+				self.left = Node(value)
+				return True
+			else:
+				return self.left.add(value)
+		elif value > self.value:
+			if self.right is None:
+				self.right = Node(value)
+				return True
+			else:
+				return self.right.add(value)
+				
 
 class BinarySearchTree:
 	""" This is a binary search tree supporting integers. """
@@ -32,6 +35,9 @@ class BinarySearchTree:
 		""" Add a value to the binary search tree """
 		if self.root == None:
 			self.root = Node(value)
+			return True
+		else:
+			return self.root.add(value)
 
 	def remove(self, value: int) -> bool:
 		""" Remove a value from the binary search tree """
@@ -47,12 +53,8 @@ class BinarySearchTree:
 
 	def __str__(self) -> str:
 		""" Return a simple string representation of the binary search tree """
-		if self.root:
-			return str(self.root)
-		else:
-			return '_'
+		raise NotImplementedError('Not yet implemented')
 
 if __name__ == '__main__':
 	bst = BinarySearchTree()
 	bst.add(4)
-	print(bst)
