@@ -57,6 +57,15 @@ class BinarySearchTree:
 		""" Get the subtree of a binary search tree by value """
 		pass
 
+	def get_deepest(self) -> tuple:
+		"""
+			Gets the deepest nodes and their depths.
+			The format is (NodeCSV, Depth)
+			where NodeCSV is is a comma seperated list of the deepest nodes
+			and Depth is the depth of those nodes
+		"""
+		return (None, None)
+
 	def __str__(self) -> str:
 		""" Return a simple string representation of the binary search tree """
 		raise NotImplementedError('Not yet implemented')
