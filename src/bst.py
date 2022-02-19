@@ -1,3 +1,5 @@
+from typing import Union
+
 class Node:
 	""" This repreesnts a single Node in a Binary Search Tree """
 	def __init__(self, value=None):
@@ -25,11 +27,15 @@ class Node:
 
 class BinarySearchTree:
 	""" This is a binary search tree supporting integers. """
-	def __init__(self, root: int=None):
+	def __init__(self, values: Union[int,list]=None):
 		""" Create a binary search tree """
 		self.root = None
-		if root:
-			self.root = Node(root)
+		if isinstance(values,list) and len(values)>0:
+			self.root = Node(values[0])
+			for val in values[1:]:
+				self.root.add(val)
+		elif isinstance(values, int):
+			self.root = Node(values)
 
 	def add(self, value: int) -> bool:
 		""" Add a value to the binary search tree """

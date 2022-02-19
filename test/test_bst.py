@@ -32,6 +32,10 @@ def test_add_root_r_r():
 	bst.add(10)
 	assert bst.root.right.right.value == 10
 
+def test_initialize_list():
+	bst = BinarySearchTree([5,6,10])
+	assert bst.root.right.right.value == 10
+
 def test_add_root_duplicate():
 	""" Check that adding duplicate results in not adding the node """
 	bst = BinarySearchTree()
