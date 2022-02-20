@@ -24,6 +24,47 @@ class Node:
 			else:
 				return self.right.add(value)
 
+	def remove(self, value: int) -> 'Node':
+		""" Remove a value from this sub-bst """
+		if self.value == value:
+			# No children
+			num_children = 0
+			if self.left:
+				num_children += 1
+			if self.right:
+				num_children += 1
+			
+			if num_children == 0:
+				return None
+			elif num_children == 1:
+				return self.left if self.left else self.right
+			elif num_children == 2:
+				# Find immediate successor
+				pre_sucessor = self
+				successor = self.right
+				while successor.left:
+					pre_sucessor = successor
+					successor = successor.left
+
+				# Take successor's value to maintain structure.
+				self.value = successor.value
+
+				# Lets now delete the node we've stolen
+				self.right = self.right.remove(successor.value)
+				
+				return self
+
+
+		elif value < self.value:
+			if self.left:
+				self.left = self.left.remove(value)
+			return self
+		elif value > self.value:
+			if self.right:
+				self.right = self.right.remove(value)
+			return self
+
+
 	def get_deepest(self, current_lvl: int) -> tuple:
 		"""
 			Gets the deepest nodes and their depths of this Node
@@ -68,9 +109,13 @@ class BinarySearchTree:
 		else:
 			return self.root.add(value)
 
-	def remove(self, value: int) -> bool:
+	def remove(self, value: int) -> 'BinarySearchTree':
 		""" Remove a value from the binary search tree """
-		pass
+		if self.root is None:
+			return self
+		else:
+			self.root = self.root.remove(value)
+			return self
 
 	def contains(self, value: int) -> bool:
 		""" Check if the binary search tree contains the value """

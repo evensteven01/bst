@@ -59,3 +59,50 @@ def test_depth_example_2():
 	bst = BinarySearchTree([26, 82, 16, 92, 33])
 	result = bst.get_deepest()
 	assert result[0] == [33,92] and result[1] == 2
+
+def test_remove_from_empty():
+	bst = BinarySearchTree()
+	result = bst.remove(4)
+	assert result.root is None
+
+def test_remove_non_existent():
+	bst = BinarySearchTree([23,12,4,56])
+	result = bst.remove(5)
+	assert result is not None
+
+def test_remove_no_children():
+	bst = BinarySearchTree([20, 14, 25, 26])
+	result = bst.remove(14)
+	assert not bst.root.left
+
+def test_remove_one_child():
+	bst = BinarySearchTree([20, 14, 25, 26])
+	result = bst.remove(25)
+	assert bst.root.right.value == 26
+
+def test_remove_two_children_successor_has_child():
+	bst = BinarySearchTree([20, 14, 25, 23, 30, 26, 27])
+	print(bst)
+	result = bst.remove(25)
+	print(bst)
+	assert bst.root.right.value == 26
+	assert bst.root.right.right.left.value == 27
+	assert bst.root.right.left.value == 23
+
+def test_remove_two_children_successor_is_child():
+	bst = BinarySearchTree([20, 14, 25, 23, 27])
+	print(bst)
+	result = bst.remove(25)
+	print(bst)
+	assert bst.root.right.value == 27
+	assert bst.root.right.right == None
+	assert bst.root.right.left.value == 23
+
+def test_remove_two_children_successor_no_child():
+	bst = BinarySearchTree([20, 14, 25, 23, 28, 27])
+	print(bst)
+	result = bst.remove(25)
+	print(bst)
+	assert bst.root.right.value == 27
+	assert bst.root.right.right.value == 28
+	assert bst.root.right.left.value == 23
