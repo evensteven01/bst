@@ -1,3 +1,11 @@
+"""
+	This file contains tests for the Bianry Search tree.
+	It is a good resource to also learn how to use the
+	Binary Search Tree.
+
+	Author: Steven Ford <evensteven01@gmail.com>
+"""
+
 from src.bst import BinarySearchTree
 
 def test_bst_empty():

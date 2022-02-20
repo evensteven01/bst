@@ -1,3 +1,14 @@
+"""
+	This file contains provides the implementation for a Binary Search Tree.
+	It only supports integers.
+
+	All expected standard operations are implemented, including add, remove,
+	search, contains. An additional get_deepest is a useful function to get
+	the deepest nodes in the tree.
+
+	Author: Steven Ford <evensteven01@gmail.com>
+"""
+
 from typing import Union
 
 class Node:
