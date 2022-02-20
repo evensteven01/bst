@@ -99,6 +99,10 @@ class Node:
 			else:
 				return None
 
+	def contains(self, value: int) -> bool:
+		result = self.search(value)
+		return True if result else False
+
 	def __str__(self) -> str:
 		return f'{self.value} {self.left} {self.right}'
 				
@@ -133,7 +137,10 @@ class BinarySearchTree:
 
 	def contains(self, value: int) -> bool:
 		""" Check if the binary search tree contains the value """
-		pass
+		if self.root:
+			return self.root.contains(value)
+		else:
+			return False
 
 	def search(self, value: int) -> 'BinarySearchTree':
 		""" Get the subtree of a binary search tree by value """
