@@ -43,6 +43,9 @@ class Node:
 			return left_result
 		else:
 			return right_result
+
+	def __str__(self) -> str:
+		return f'{self.value} {self.left} {self.right}'
 				
 
 class BinarySearchTree:
@@ -91,8 +94,8 @@ class BinarySearchTree:
 
 	def __str__(self) -> str:
 		""" Return a simple string representation of the binary search tree """
-		raise NotImplementedError('Not yet implemented')
+		return str(self.root)
 
 if __name__ == '__main__':
-	bst = BinarySearchTree()
-	bst.add(4)
+	bst = BinarySearchTree([20, 14, 25, 23, 30, 26, 27])
+	print(bst)
