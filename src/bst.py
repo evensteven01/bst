@@ -86,7 +86,18 @@ class Node:
 
 	def search(self, value: int) -> 'Node':
 		""" Search this sub-tree for the value, returning the whole subtree """
-		return None
+		if self.value == value:
+			return self
+		elif value < self.value:
+			if self.left:
+				return self.left.search(value)
+			else:
+				return None
+		elif value > self.value:
+			if self.right:
+				return self.right.search(value)
+			else:
+				return None
 
 	def __str__(self) -> str:
 		return f'{self.value} {self.left} {self.right}'

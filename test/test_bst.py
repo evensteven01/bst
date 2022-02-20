@@ -110,16 +110,16 @@ def test_remove_two_children_successor_no_child():
 def test_search_empty_tree():
 	bst = BinarySearchTree()
 	result = bst.search(4)
-	assert result is None
+	assert result and result.root is None
 
 def test_search_not_in_tree():
 	bst = BinarySearchTree(5)
 	result = bst.search(4)
-	assert result is None
+	assert result and result.root is None
 
 def test_search_find():
 	bst = BinarySearchTree([20, 14, 25, 23, 28, 27])
 	result = bst.search(25)
-	assert result and result.value == 25
-	assert result and result.left.value == 23
+	assert result and result.root.value == 25
+	assert result and result.root.left.value == 23
 
