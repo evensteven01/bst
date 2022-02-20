@@ -16,6 +16,10 @@ def test_bst_add_one():
 	bst.add(3)
 	assert bst.root.value == 3
 
+def test_bst_add_duplicate():
+	bst = BinarySearchTree([3,3])
+	assert bst.root.value == 3 and not bst.root.left and not bst.root.right
+
 def test_add_root_l_l():
 	""" Check that adding 3 nodes place properly in root then left, left """
 	bst = BinarySearchTree()
