@@ -64,7 +64,6 @@ class Node:
 				self.right = self.right.remove(value)
 			return self
 
-
 	def get_deepest(self, current_lvl: int) -> tuple:
 		"""
 			Gets the deepest nodes and their depths of this Node
@@ -84,6 +83,10 @@ class Node:
 			return left_result
 		else:
 			return right_result
+
+	def search(self, value: int) -> 'Node':
+		""" Search this sub-tree for the value, returning the whole subtree """
+		return None
 
 	def __str__(self) -> str:
 		return f'{self.value} {self.left} {self.right}'
@@ -123,7 +126,10 @@ class BinarySearchTree:
 
 	def search(self, value: int) -> 'BinarySearchTree':
 		""" Get the subtree of a binary search tree by value """
-		pass
+		bst = BinarySearchTree()
+		if self.root:
+			bst.root = self.root.search(value)
+		return bst
 
 	def get_deepest(self) -> tuple:
 		"""
