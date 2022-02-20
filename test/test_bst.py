@@ -123,3 +123,17 @@ def test_search_find():
 	assert result and result.root.value == 25
 	assert result and result.root.left.value == 23
 
+def test_contains_empty():
+	bst = BinarySearchTree()
+	result = bst.contains(4)
+	assert result is False
+
+def test_contains_false():
+	bst = BinarySearchTree([20, 14, 25, 23, 28, 27])
+	result = bst.contains(4)
+	assert result is False
+
+def test_contains_true():
+	bst = BinarySearchTree([20, 14, 25, 23, 28, 27])
+	result = bst.contains(14)
+	assert result is True
